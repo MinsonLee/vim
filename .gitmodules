@@ -1,0 +1,12 @@
+[submodule "vim-plug"]
+	path = autoload
+	url = git@github.com:junegunn/vim-plug.git
+	branch = master
+[submodule "nerdtree"]
+	path = plugged/nerdtree
+	url = git@github.com:preservim/nerdtree.git
+	branch = master
+[submodule "vim-indent-guides"]
+	path = plugged/vim-indent-guides
+	url = git@github.com:nathanaelkane/vim-indent-guides.git
+	branch = master
