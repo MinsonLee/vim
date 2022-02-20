@@ -30,3 +30,10 @@ git clone git@gitee.com:minson-lee/vim.git ~/.vim --recurse-submodules --remote-
 - [nerdtree](https://github.com/preservim/nerdtree.git) : 树形目录
 - [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides):
   代码对齐线
+
+
+## 变更记录
+
+Date | Doc
+---- | ---
+2022-02-20 | 初始化 vimrc && 安装 vim-pulg、nerdtree、vim-indent-guides插件
