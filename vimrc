@@ -29,6 +29,7 @@ set textwidth=79 " 设置行最大宽度
 set encoding=utf-8 " 设置编码
 set fenc=utf-8 " 设置默认编码
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
+set fileencodings=utf-8,gbk,utf-16,big5
 set history=100 " 设置history文件记录行数
 set nobackup " 设置不需要备份文件
 set noswapfile " 设置不需要临时交换文件
@@ -60,6 +61,8 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 " 配置 NERDTree 插件
 autocmd vimenter * NERDTree  "自动开启Nerdtree
+let g:nerdtree_tabs_open_on_console_startup = 1 " 配置 NERDTree Tabs 插件自动启动
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " 当NERDTree为剩下的唯一窗口时自动关闭
 " 定义快捷键
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1 " 开启默认显示隐藏文件 . 开头的文件

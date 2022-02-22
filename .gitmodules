@@ -10,3 +10,7 @@
 	path = plugged/vim-indent-guides
 	url = git@github.com:nathanaelkane/vim-indent-guides.git
 	branch = master
+[submodule "nerdtree-tabs"]
+	path = plugged/vim-nerdtree-tabs
+	url = git@github.com:jistr/vim-nerdtree-tabs.git
+	branch = master

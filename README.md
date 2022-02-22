@@ -28,6 +28,8 @@ git clone git@gitee.com:minson-lee/vim.git ~/.vim --recurse-submodules --remote-
 
 - [vim-plug](https://github.com/junegunn/vim-plug/branches) : VIM 插件管理包
 - [nerdtree](https://github.com/preservim/nerdtree.git) : 树形目录
+- [nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs) :
+  树形目录显示增强
 - [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides):
   代码对齐线
 
@@ -37,3 +39,4 @@ git clone git@gitee.com:minson-lee/vim.git ~/.vim --recurse-submodules --remote-
 Date | Doc
 ---- | ---
 2022-02-20 | 初始化 vimrc && 安装 vim-pulg、nerdtree、vim-indent-guides插件
+2022-02-23 | 安装 nerdtree-tabs 插件
