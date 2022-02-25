@@ -40,6 +40,8 @@ set ruler " 设置状态行显示当前光标位置
 set background=dark "设置背景
 " colorscheme  molokai " 设置颜色主题
 set fileformat=unix " 设置文件格式
+set ts=4 " 设置 tab 键宽度是 4 个空格
+set expandtab " 设置默认开启tab扩展-将tab转为空格
 
 set cc=120 " 设置第120列高亮
 "set cursorcolumn " 设置光标所在列
