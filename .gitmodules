@@ -14,3 +14,7 @@
 	path = plugged/vim-nerdtree-tabs
 	url = git@github.com:jistr/vim-nerdtree-tabs.git
 	branch = master
+[submodule "pangu"]
+	path = plugged/pangu.vim
+	url = git@github.com:hotoo/pangu.vim.git
+	branch = master

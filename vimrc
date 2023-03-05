@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 " 安装插件，在下方输入列表，然后通过 :PlugInstall 安装
 Plug 'nathanaelkane/vim-indent-guides' " 对齐线
 Plug 'preservim/nerdtree' " 树形目录
+Plug 'hotoo/pangu.vim',{ 'for': ['markdown','vimwiki','text'] } " 中午排版优化
 
 " 所有插件都必须加在 #end() 这一行之前
 call plug#end()
@@ -68,3 +69,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " 定义快捷键
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden = 1 " 开启默认显示隐藏文件 . 开头的文件
+" 开启中文排版优化插件
+let g:pangu_rule_date = 1
+autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing('ALL')
