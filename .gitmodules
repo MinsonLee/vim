@@ -18,3 +18,7 @@
 	path = plugged/pangu.vim
 	url = git@github.com:hotoo/pangu.vim.git
 	branch = master
+[submodule "plugged/emmet-vim"]
+	path = plugged/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+	branch = master
