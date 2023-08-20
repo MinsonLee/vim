@@ -115,7 +115,12 @@ func AddShellDoc()
     call setline(10, "")
     endif
 endfunc
+map ,asd :call AppendShellDoc()<CR>
+func AppendShellDoc()
+normal 2
+call append(line(".")+2, "hhhhhhhhhhhhhh")
+endfunc
 
 " 自动将光标设置到末尾
-autocmd BufNewFile * normal G
+" autocmd BufNewFile * normal G
 " ############################################### 注释配置 End   ######################################################
