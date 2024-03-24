@@ -20,7 +20,10 @@ filetype plugin indent on " 重新开启文件类型识别
 
 " ############################################### 插件配置 Start ######################################################
 " 配置 indent-guides 插件
-let g:indent_guides_enable_on_vim_startup = 1 " VIM 启动时启用
+let g:indent_guides_enable_on_vim_startup = 0 " VIM 启动时启用
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  guibg=red   ctermbg=3
+hi IndentGuidesEven guibg=green ctermbg=4
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
@@ -83,7 +86,7 @@ set background=dark "设置背景
 " colorscheme  molokai " 设置颜色主题
 set fileformat=unix " 设置文件格式化为 unix 系统（主要涉及换行符问题）
 
-"set cursorcolumn " 设置光标所在列
+set cursorcolumn " 设置光标所在列
 " 设置快捷键 ,ch 调用 SetColorColumn 函数
 map ,ch :call SetColorColumn()<CR>
 " 设置与关闭鼠标所在列高亮
@@ -100,7 +103,6 @@ endfunction
 
 " ############################################### 注释配置 Start ######################################################
 " 如果新文件是 .sh 文件，自动执行 AddShellDoc 函数
-autocmd BufNewFile *.sh exec ":call AddShellDoc()"
 func AddShellDoc()
     if expand("%:e") == 'sh'
     call setline(1, "#!/bin/bash")
@@ -115,12 +117,14 @@ func AddShellDoc()
     call setline(10, "")
     endif
 endfunc
+autocmd BufNewFile *.sh exec ":call AddShellDoc()"
+" 定义快捷键
 map ,asd :call AppendShellDoc()<CR>
 func AppendShellDoc()
-normal 2
-call append(line(".")+2, "hhhhhhhhhhhhhh")
+    normal 2
+    call append(line(".")+2, "hhhhhhhhhhhhhh")
 endfunc
 
 " 自动将光标设置到末尾
-" autocmd BufNewFile * normal G
+autocmd BufNewFile * normal G
 " ############################################### 注释配置 End   ######################################################
