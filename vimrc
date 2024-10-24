@@ -56,8 +56,6 @@ set nu " 设置行号
 set nowrap    "不自动折行
 set paste " 解决粘贴乱序问题
 set ignorecase " 不区分大小写
-set cursorline "突出显示当前行
-" highlight CursorLine guibg=lightblue ctermbg=lightgray " 修饰横线
 
 set ts=4 " 设置 tab 键宽度是 4 个空格
 set tabstop=4 " 设置指标符宽度
@@ -86,6 +84,8 @@ set background=dark "设置背景
 " colorscheme  molokai " 设置颜色主题
 set fileformat=unix " 设置文件格式化为 unix 系统（主要涉及换行符问题）
 
+set cursorline "突出显示当前行
+highlight CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white " 修饰横线
 set cursorcolumn " 设置光标所在列
 " 设置快捷键 ,ch 调用 SetColorColumn 函数
 map ,ch :call SetColorColumn()<CR>
