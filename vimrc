@@ -28,12 +28,18 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " 配置 NERDTree 插件
-"autocmd vimenter * NERDTree  "自动开启Nerdtree
-let g:nerdtree_tabs_open_on_console_startup = 1 " 配置 NERDTree Tabs 插件自动启动
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " 当NERDTree为剩下的唯一窗口时自动关闭
+" 从标准输入读取第一个参数并赋值
+autocmd StdinReadPre * let s:std_in=1
+" 自动开启 NERDTree
+" 如果 vi 后指定了打开某个文件，则将光标移动到文件窗口，否则光标定位到 NERDTree 窗口
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" let g:nerdtree_tabs_open_on_console_startup = 1 " 配置 NERDTree Tabs 插件自动启动
+let NERDTreeShowHidden = 1 " 开启默认显示隐藏文件 . 开头的文件
+" 当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif 
+" 
 " 定义快捷键 Ctrl + n
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden = 1 " 开启默认显示隐藏文件 . 开头的文件
 
 " 开启中文排版优化插件
 let g:pangu_rule_date = 1
@@ -57,40 +63,39 @@ set nowrap    "不自动折行
 set paste " 解决粘贴乱序问题
 set ignorecase " 不区分大小写
 
-set ts=4 " 设置 tab 键宽度是 4 个空格
-set tabstop=4 " 设置指标符宽度
-set softtabstop=4 " 设置软制表符宽度
-set shiftwidth=4 " 设置缩进空格
-set textwidth=79 " 设置行最大宽度
-set cc=120 " 设置第120列高亮
-set expandtab " 设置默认开启tab扩展-将tab转为空格
-
-
 set encoding=utf-8 " 设置编码
 set fenc=utf-8 " 设置默认编码
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
 set fileencodings=utf-8,gbk,utf-16,big5
+
+set wildmenu " 增强模式中命令行自动完成操作
+set ruler " 设置状态行显示当前光标位置
+" 自定义状态行的显示格式
+"set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+set background=dark "设置背景
+set fileformat=unix " 设置文件格式化为 unix 系统（主要涉及换行符问题）
 
 set history=100 " 设置history文件记录行数
 set nobackup " 设置不需要备份文件
 set noswapfile " 设置不需要临时交换文件
 set nowritebackup " 设置编辑时不需要备份文件
 
+set ts=4 " 设置 tab 键宽度是 4 个空格
+set tabstop=4 " 设置指标符宽度
+set softtabstop=4 " 设置软制表符宽度
+set shiftwidth=4 " 设置缩进空格
+set textwidth=79 " 设置行最大宽度
+set cc=120 " 设置第120列高亮(colorcolumn)
 set autoindent " 设置自动缩进
-set wildmenu " 增强模式中命令行自动完成操作
-set ruler " 设置状态行显示当前光标位置
-"set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
-set background=dark "设置背景
-" colorscheme  molokai " 设置颜色主题
-set fileformat=unix " 设置文件格式化为 unix 系统（主要涉及换行符问题）
+set expandtab " 设置默认开启tab扩展-将tab转为空格
+" 如果是 yaml 文件，更改上述宽度为 2
+autocmd Filetype yaml,yml set ai nu ru ts=2 tabstop=2 softtabstop=2 sw=2 et
 
-set cursorline "突出显示当前行
-highlight CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white " 修饰横线
-set cursorcolumn " 设置光标所在列
-" 设置快捷键 ,ch 调用 SetColorColumn 函数
-map ,ch :call SetColorColumn()<CR>
+set cursorline "突出显示光标所在行
+highlight CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white " 高亮当前行
+set cursorcolumn " 突出显示光标所在列
 " 设置与关闭鼠标所在列高亮
-function! SetColorColumn()
+function SetColorColumn()
     let col_num = virtcol(".")
     let cc_list = split(&cc, ',')
     if count(cc_list, string(col_num)) <= 0
@@ -99,31 +104,40 @@ function! SetColorColumn()
         execute "set cc-=".col_num
     endif
 endfunction
+" 设置快捷键(Color Column Hightline) Ctrl+c+c 调用 SetColorColumn 函数
+map <C-c><C-c> :call SetColorColumn()<CR>
+
+" 关闭所有高亮列
+function CleanColorColumn()
+    let cc_list = split(&cc, ',')
+    for c in cc_list
+        execute "set cc-=".c
+    endfor
+endfunction
+" 设置快捷键(Clean Column Hightline) ,ch 调用 CleanColorColumn 函数
+map ,ch :call CleanColorColumn()<CR>
 
 
 " ############################################### 注释配置 Start ######################################################
-" 如果新文件是 .sh 文件，自动执行 AddShellDoc 函数
-func AddShellDoc()
+func AppendShellDoc()
     if expand("%:e") == 'sh'
-    call setline(1, "#!/bin/bash")
-    call setline(2, "")
-    call setline(3, "#*********************************************")
-    call setline(4, "# Description: The Test Script")
-    call setline(5, "# Author: limingshuang")
-    call setline(6, "# Date: " . strftime("%Y/%m/%d %H:%i%s"))
-    call setline(7, "# HomePage: https://minsonlee.github.io/")
-    call setline(8, "# Copyright © ".strftime("%Y")." All rights reserved")
-    call setline(9, "#*********************************************")
-    call setline(10, "")
+    let cl = line(".")
+    call append(cl-1, "#!/bin/bash")
+    call append(cl, "")
+    call append(cl+1, "#*********************************************")
+    call append(cl+2, "# Description: The Test Script")
+    call append(cl+3, "# Author: limingshuang")
+    call append(cl+4, "# Date: " . strftime("%Y/%m/%d %A %H:%M%S"))
+    call append(cl+5, "# HomePage: https://minsonlee.github.io/")
+    call append(cl+6, "# Copyright © ".strftime("%Y")." All rights reserved")
+    call append(cl+7, "#*********************************************")
+    call append(cl+8, "")
     endif
 endfunc
-autocmd BufNewFile *.sh exec ":call AddShellDoc()"
+" 如果新文件是 .sh 文件，自动执行 AppendShellDoc 函数
+autocmd BufNewFile *.sh exec ":call AppendShellDoc()"
 " 定义快捷键
-map ,asd :call AppendShellDoc()<CR>
-func AppendShellDoc()
-    normal 2
-    call append(line(".")+2, "hhhhhhhhhhhhhh")
-endfunc
+map ,ds :call AppendShellDoc()<CR>
 
 " 自动将光标设置到末尾
 autocmd BufNewFile * normal G
