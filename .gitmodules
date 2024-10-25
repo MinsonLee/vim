@@ -1,22 +1,22 @@
 [submodule "vim-plug"]
 	path = autoload
-	url = git@github.com:junegunn/vim-plug.git
+	url = https://github.com/junegunn/vim-plug.git
 	branch = master
 [submodule "nerdtree"]
 	path = plugged/nerdtree
-	url = git@github.com:preservim/nerdtree.git
+	url = https://github.com/preservim/nerdtree.git
 	branch = master
 [submodule "vim-indent-guides"]
 	path = plugged/vim-indent-guides
-	url = git@github.com:nathanaelkane/vim-indent-guides.git
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
 	branch = master
 [submodule "nerdtree-tabs"]
 	path = plugged/vim-nerdtree-tabs
-	url = git@github.com:jistr/vim-nerdtree-tabs.git
+	url = https://github.com/jistr/vim-nerdtree-tabs.git
 	branch = master
 [submodule "pangu"]
 	path = plugged/pangu.vim
-	url = git@github.com:hotoo/pangu.vim.git
+	url = https://github.com/hotoo/pangu.vim.git
 	branch = master
 [submodule "plugged/emmet-vim"]
 	path = plugged/emmet-vim
