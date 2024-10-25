@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 " 安装插件，在下方输入列表，然后通过 :PlugInstall 安装
 Plug 'nathanaelkane/vim-indent-guides' " 对齐线
 Plug 'preservim/nerdtree' " 树形目录
+Plug 'Xuyuanp/nerdtree-git-plugin' " 树形目录 Git 插件
 Plug 'hotoo/pangu.vim',{ 'for': ['markdown','vimwiki','text'] } " 中文排版优化
 Plug 'mattn/emmet-vim'
 

@@ -22,3 +22,7 @@
 	path = plugged/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
 	branch = master
+[submodule "plugged/nerdtree-git-plugin"]
+	path = plugged/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+	branch = master
