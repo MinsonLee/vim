@@ -9,7 +9,7 @@
 
 ## 如何一键安装配置和插件？
 
-确保已经正确安装了 `8.0` 以上版本的 VIM，然后执行下列代码即可.
+确保已经正确安装了 `8.0` 以上版本的 VIM，然后执行下列代码即可。
 
 Github 和 Gitee 地址同时更新
 
@@ -27,16 +27,15 @@ git clone git@gitee.com:minson-lee/vim.git ~/.vim --recurse-submodules --remote-
 工具，此处只是将自己使用比较多且比较好用的插件进行了管理。
 
 - [vim-plug](https://github.com/junegunn/vim-plug/branches) : VIM 插件管理包
+- [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides):  代码对齐线
+- [hotoo/pangu.vim](https://github.com/hotoo/pangu.vim.git) : 中文排版优化
+- [mattn/emmet-vim](https://github.com/mattn/emmet-vim.git) : 写前端代码的 Emmet 利器插件
 - [nerdtree](https://github.com/preservim/nerdtree.git) : 树形目录
-- [nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs) :
-  树形目录显示增强
-- [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides):
-  代码对齐线
-
-
-## 变更记录
-
-Date | Doc
----- | ---
-2022-02-20 | 初始化 vimrc && 安装 vim-pulg、nerdtree、vim-indent-guides插件
-2022-02-23 | 安装 nerdtree-tabs 插件
+- [nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs) :  树形目录显示增强，使得可以用 tab 方式打开新文件
+- [Xuyuanp/nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin.git) : 树形目录 Git 插件
+  - `r` 刷新目录
+  - `t` 以新 tab 方式打开
+  - `i` 水平分割当前 tab 窗口并打开文件
+  - `s` 垂直分割当前 tab 窗口并打开文件
+  - `:tabs` 查看所有打开的 `tab`
+  - [更多快捷键](https://gist.github.com/ifels/e0a6d79ee60e113f4294)

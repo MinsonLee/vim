@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 " 安装插件，在下方输入列表，然后通过 :PlugInstall 安装
 Plug 'nathanaelkane/vim-indent-guides' " 对齐线
 Plug 'preservim/nerdtree' " 树形目录
+Plug 'jistr/vim-nerdtree-tabs' " 树形目录增强插件-可以让文件以多个 tab 方式打开而非覆盖当前文件打开显示
 Plug 'Xuyuanp/nerdtree-git-plugin' " 树形目录 Git 插件
 Plug 'hotoo/pangu.vim',{ 'for': ['markdown','vimwiki','text'] } " 中文排版优化
 Plug 'mattn/emmet-vim'
@@ -34,13 +35,31 @@ autocmd StdinReadPre * let s:std_in=1
 " 自动开启 NERDTree
 " 如果 vi 后指定了打开某个文件，则将光标移动到文件窗口，否则光标定位到 NERDTree 窗口
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-" let g:nerdtree_tabs_open_on_console_startup = 1 " 配置 NERDTree Tabs 插件自动启动
-let NERDTreeShowHidden = 1 " 开启默认显示隐藏文件 . 开头的文件
 " 当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif 
-" 
-" 定义快捷键 Ctrl + n
+let NERDTreeShowHidden = 1 " 开启默认显示隐藏文件 . 开头的文件
+let NERDTreeShowBookmarks=1 " 启动插件时自动显示 Bookmarks
+let g:NERDTreeShowLineNumbers=1 " 树形插件显示行号
+" 定义快捷键 Ctrl + n 快速打开或关闭树形目录
 map <C-n> :NERDTreeToggle<CR>
+
+" 配置 NERTree-Tabs 插件
+let g:nerdtree_tabs_open_on_console_startup = 1 " 配置 NERDTree Tabs 插件自动启动
+let NERDTreeMapOpenInTab='<ENTER>' " 默认打开新文件的时候是以新 Tab 方式打开
+
+" 配置 nerdtree-git 插件
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+\ 'Modified'  :'✹',
+\ 'Staged'    :'✚',
+\ 'Untracked' :'✭',
+\ 'Renamed'   :'➜',
+\ 'Unmerged'  :'═',
+\ 'Deleted'   :'✖',
+\ 'Dirty'     :'✗',
+\ 'Ignored'   :'☒',
+\ 'Clean'     :'✔︎',
+\ 'Unknown'   :'?',
+\ }
 
 " 开启中文排版优化插件
 let g:pangu_rule_date = 1
