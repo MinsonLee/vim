@@ -23,8 +23,7 @@ git clone git@gitee.com:minson-lee/vim.git ~/.vim --recurse-submodules --remote-
 
 ## 已安装插件列表
 
-没有想过将 VIM 打造成一个强大的 IDE
-工具，此处只是将自己使用比较多且比较好用的插件进行了管理。
+没有想过将 VIM 打造成一个强大的 IDE 工具，此处只是将自己使用比较多且比较好用的插件进行了管理。
 
 - [vim-plug](https://github.com/junegunn/vim-plug/branches) : VIM 插件管理包
 - [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides):  代码对齐线
@@ -38,4 +37,6 @@ git clone git@gitee.com:minson-lee/vim.git ~/.vim --recurse-submodules --remote-
   - `i` 水平分割当前 tab 窗口并打开文件
   - `s` 垂直分割当前 tab 窗口并打开文件
   - `:tabs` 查看所有打开的 `tab`
+  - `qa` 关闭所有的 `tab`
+  - `ngt` 跳转到第 n 个 `tab` （在：`vimrc` 中自定义了快捷键 `,n` 跳转到第 `n` 个 tab）
   - [更多快捷键](https://gist.github.com/ifels/e0a6d79ee60e113f4294)

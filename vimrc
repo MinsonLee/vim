@@ -47,6 +47,20 @@ map <C-n> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1 " 配置 NERDTree Tabs 插件自动启动
 let NERDTreeMapOpenInTab='<ENTER>' " 默认打开新文件的时候是以新 Tab 方式打开
 
+" Alt 键映射为 <M> 容易和系统键冲突且该映射需要VIM支持GUI模式
+" 定义快捷键 , + n 快速切换 tab
+:map ,1 :tabfirst<CR>
+:map ,2 :tabn 2<CR> " 等同于 2gt
+:map ,3 3gt<CR>
+:map ,4 :tabnext 4<CR>
+:map ,5 :tabnext 5<CR>
+:map ,6 :tabnext 6<CR>
+:map ,7 :tabnext 7<CR>
+:map ,8 :tabnext 8<CR>
+:map ,9 :tabnext 9<CR>
+:map ,0 :tablast<CR>
+
+
 " 配置 nerdtree-git 插件
 let g:NERDTreeGitStatusIndicatorMapCustom = {
 \ 'Modified'  :'✹',
@@ -91,7 +105,7 @@ set fileencodings=utf-8,gbk,utf-16,big5
 set wildmenu " 增强模式中命令行自动完成操作
 set ruler " 设置状态行显示当前光标位置
 " 自定义状态行的显示格式
-"set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+" set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 set background=dark "设置背景
 set fileformat=unix " 设置文件格式化为 unix 系统（主要涉及换行符问题）
 
