@@ -144,6 +144,8 @@ map <C-c><C-c> :call SetColorColumn()<CR>
 " 关闭所有高亮列
 function CleanColorColumn()
     let cc_list = split(&cc, ',')
+    " 移除掉 vimrc 中本身设置的 set cc = 120 以外的所有高亮列
+    let cc_list = cc_list[1:]
     for c in cc_list
         execute "set cc-=".c
     endfor
