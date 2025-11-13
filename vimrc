@@ -94,7 +94,7 @@ set scrolloff=3 " 距离顶部和底部3行
 set mouse=a " 启动鼠标
 set nu " 设置行号
 set nowrap    "不自动折行
-set paste " 解决粘贴乱序问题
+inoremap :setl pastegi+:setl nopastegi " 解决粘贴乱序问题
 set ignorecase " 不区分大小写
 
 set encoding=utf-8 " 设置编码
