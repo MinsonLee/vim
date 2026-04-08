@@ -158,7 +158,7 @@ map ,ch :call CleanColorColumn()<CR>
 func AppendShellDoc()
     if expand("%:e") == 'sh'
     let cl = line(".")
-    call append(cl-1, "#!/bin/bash")
+    call append(cl-1, "#!/usr/bin/env bash")
     call append(cl, "")
     call append(cl+1, "#*********************************************")
     call append(cl+2, "# Description: The Test Script")
